@@ -7,18 +7,8 @@ class ListNode:
 def printListNode(prefix: str, node: ListNode):
     if not node:
         print(f"{prefix} None")
-    received = []
-    i = 0
-    while True:
-        i += 1
-        if i > 10:
-            break
-        received.append(node.val)
-        if node.next == None:
-            break
-        else:
-            node = node.next
 
+    received = listNode2list(node)
     print(f"{prefix} {received}")
 
 
