@@ -1,10 +1,5 @@
 from typing import Optional
-
-
-class ListNode:
-    def __init__(self, val=0, next=None):
-        self.val = val
-        self.next = next
+from Utilities.ListNode import ListNode, printListNode
 
 
 class Solution:
@@ -39,20 +34,3 @@ class Solution:
 
         result_end.next = current
         return result.next
-
-    def printNode(self, prefix: str, node: ListNode):
-        if not node:
-            print(f"{prefix} None")
-        received = []
-        i = 0
-        while True:
-            i += 1
-            if i > 10:
-                break
-            received.append(node.val)
-            if node.next == None:
-                break
-            else:
-                node = node.next
-
-        print(f"{prefix} {received}")
