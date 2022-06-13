@@ -3,7 +3,7 @@ class Solution:
         if len(nums) == 1:
             return 0 if nums[0] == target else -1
 
-        pivot = self.unrotate(nums)
+        pivot = self.find_pivot(nums)
         if pivot == -1:
             values = nums.copy()
         else:
@@ -12,47 +12,35 @@ class Solution:
         if values[0] > target or values[-1] < target:
             return -1
 
-        result = 0
+        left = 0
+        right = len(values) - 1
         while True:
-            if len(values) == 1:
-                result = result + 1 + pivot
+            if left == right:
+                result = left + 1 + pivot
                 if result >= len(nums):
                     result -= len(nums)
-                return result if values[0] == target else -1
-            half = int(len(values) / 2)
-            x = values[:half]
-            y = values[half:]
-            if x[-1] == target:
-                result = result + len(x) + pivot
-                if result >= len(nums):
-                    result -= len(nums)
-                return result
-            if x[-1] < target:
-                if y[0] > target:
-                    return -1
-                result += len(x)
-                values = y
-            else:
-                values = x
+                return result if values[left] == target else -1
 
-    def unrotate(self, nums: list[int]) -> int:
+            half = int((right + 1 + left) / 2)
+            if values[half - 1] < target:
+                if values[half] > target:
+                    return -1
+                left = half
+            else:
+                right = half - 1
+
+    def find_pivot(self, nums: list[int]) -> int:
         if nums[0] < nums[-1]:
             return -1
 
-        values = nums.copy()
-        pivot = 0
+        left = 0
+        right = len(nums) - 1
 
         while True:
-            half = int(len(values) / 2)
-            x = values[:half]
-            y = values[half:]
-            if x[0] <= x[-1] and y[0] <= y[-1]:
-                pivot += len(x)
-                break
-            elif x[0] <= x[-1]:
-                pivot += len(x)
-                values = y
+            half = int((right + 1 + left) / 2)
+            if nums[left] <= nums[half - 1] and nums[half] <= nums[-1]:
+                return half - 1
+            elif nums[left] <= nums[half - 1]:
+                left = half
             else:
-                values = x
-
-        return pivot - 1
+                right = half - 1

@@ -41,4 +41,4 @@ class TestSolution(TestCase):
 
     def test_unrotate1(self):
         x = Solution()
-        self.assertEqual(3, x.unrotate([4,5,6,7,0,1,2]))
+        self.assertEqual(3, x.find_pivot([4, 5, 6, 7, 0, 1, 2]))
