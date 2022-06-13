@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def longestValidParentheses(self, s: str) -> int:
+        return 0
