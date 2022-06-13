@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def removeElement(self, nums: list[int], val: int) -> int:
+        return 0
