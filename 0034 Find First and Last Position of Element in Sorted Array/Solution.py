@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def searchRange(self, nums: list[int], target: int) -> list[int]:
+        return [-2, -2]
