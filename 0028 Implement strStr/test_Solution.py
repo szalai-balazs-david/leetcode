@@ -10,3 +10,7 @@ class TestSolution(TestCase):
     def test_strStr2(self):
         x = Solution()
         self.assertEqual(-1, x.strStr("aaaaa", "bba"))
+
+    def test_strStr3(self):
+        x = Solution()
+        self.assertEqual(-1, x.strStr("mississippi", "issipi"))
