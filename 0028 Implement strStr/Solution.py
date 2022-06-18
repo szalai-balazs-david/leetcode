@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def strStr(self, haystack: str, needle: str) -> int:
+        return -1
