@@ -19,7 +19,6 @@ class Solution:
 
         while left < right:
             mid = int((left + right + 1) / 2)
-            print(f"first: left: {left}, right: {right}, mid: {mid}")
             if nums[mid] == target and nums[mid - 1] != target:
                 return mid
             if nums[mid] >= target:
@@ -40,7 +39,6 @@ class Solution:
 
         while left < right:
             mid = int((left + right) / 2)
-            print(f"last: left: {left}, right: {right}, mid: {mid}")
             if nums[mid] == target and nums[mid + 1] != target:
                 return mid
             if nums[mid] <= target:
