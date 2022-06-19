@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def searchInsert(self, nums: list[int], target: int) -> int:
+        return -1
