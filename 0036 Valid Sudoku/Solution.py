@@ -14,7 +14,6 @@ class Solution:
                 group = []
                 for x in range(3):
                     group = group + board[i * 3 + x][j * 3 : j * 3 + 3]
-                print(group)
                 if self.isBad(group):
                     return False
 
