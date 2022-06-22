@@ -17,3 +17,10 @@ class TestSolution(TestCase):
         node = x.buildTree([-1], [-1])
         actual = treeNode2List(node)
         self.assertListEqual(expected, actual)
+
+    def test_buildTree3(self):
+        x = Solution()
+        expected = [1,2,3,4,None,5,6,None,None,None,7,8,9]
+        node = x.buildTree([1,2,4,3,5,7,6,8,9], [4,2,1,5,7,3,8,6,9])
+        actual = treeNode2List(node)
+        self.assertListEqual(expected, actual)
