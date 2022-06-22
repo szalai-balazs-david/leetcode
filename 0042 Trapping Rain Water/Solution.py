@@ -5,14 +5,22 @@ class Solution:
 
         result = 0
         left = 0
-        for i in range(len(height)):
-            if height[i] >= height[left]:
-                for val in height[left + 1 : i]:
-                    result += height[left] - val
-                left = i
+        right = len(height) - 1
+        left_max = left
+        right_max = right
 
-        right = height[left:]
-        right.reverse()
-        result += self.trap(right)
+        while left < right:
+            if height[left] < height[right]:
+                left += 1
+                if height[left] >= height[left_max]:
+                    for val in height[left_max:left + 1]:
+                        result += max(0, height[left_max] - val)
+                    left_max = left
+            else:
+                right -= 1
+                if height[right] >= height[right_max]:
+                    for val in height[right:right_max + 1]:
+                        result += max(0, height[right_max] - val)
+                    right_max = right
 
         return result
