@@ -15,15 +15,24 @@ class Solution:
                 match = self.isMatch(s, p[1:]) or (len(s) > 0 and self.isMatch(s[1:], p))
                 return match
             section = ""
+            is_exact_section = True
+            is_final_section = True
             for c in p[1:]:
-                if c not in ["*", "?"]:
-                    section += c
-                else:
+                if c == "*":
+                    is_final_section = False
                     break
+                if c == "?":
+                    is_final_section = False
+                    is_exact_section = False
+                    break
+                section += c
+            if is_final_section:
+                return section == s[-len(section):]
             if section in s:
                 i = s.index(section)
-                match = self.isMatch(s[i + len(section):], p[1 + len(section):]) or self.isMatch(s[i + 1:], p)
-                return match
+                if is_exact_section:
+                    return self.isMatch(s[i + len(section):], p[1 + len(section):])
+                return self.isMatch(s[i + len(section):], p[1 + len(section):]) or self.isMatch(s[i + 1:], p)
             return False
         else:
             if not s:
