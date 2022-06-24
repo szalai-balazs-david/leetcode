@@ -1,10 +1,7 @@
 class Solution:
     def jump(self, nums: list[int]) -> int:
-        print(nums)
         if len(nums) == 1:
             return 0
-        if nums[0] >= len(nums) - 1:
-            return 1
 
         def singleJump(index: int) -> int:
             best = 0
