@@ -1,3 +1,3 @@
 class Solution:
-    def method(self):
-        print("test")
+    def jump(self, nums: list[int]) -> int:
+        return -1
