@@ -4,4 +4,7 @@ from typing import Optional
 
 class Solution:
     def inorderTraversal(self, root: Optional[TreeNode]) -> list[int]:
-        return []
+        if root is None:
+            return []
+
+        return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
