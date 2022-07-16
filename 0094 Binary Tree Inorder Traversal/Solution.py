@@ -7,4 +7,11 @@ class Solution:
         if root is None:
             return []
 
+        if root.left is None:
+            if root.right is None:
+                return [root.val]
+            return [root.val] + self.inorderTraversal(root.right)
+
+        if root.right is None:
+            self.inorderTraversal(root.left) + [root.val]
         return self.inorderTraversal(root.left) + [root.val] + self.inorderTraversal(root.right)
