@@ -19,3 +19,12 @@ class TestSolution(TestCase):
                                  TreeNode(3),
                                  TreeNode(6)))
         self.assertEqual(False, x.isValidBST(tree))
+
+    def test_is_valid_bst3(self):
+        x = Solution()
+        tree = TreeNode(5,
+                        TreeNode(4),
+                        TreeNode(6,
+                                 TreeNode(3),
+                                 TreeNode(7)))
+        self.assertEqual(False, x.isValidBST(tree))
