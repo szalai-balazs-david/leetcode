@@ -14,8 +14,6 @@ class Solution:
             level = []
 
             for element in elements:
-                if element is None:
-                    continue
                 level.append(element.val)
                 if element.left is not None:
                     children.append(element.left)
