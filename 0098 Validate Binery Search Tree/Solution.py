@@ -1,4 +1,4 @@
-from Utilities.TreeNode import TreeNode, treeNode2List
+from Utilities.TreeNode import TreeNode
 from typing import Optional
 
 
