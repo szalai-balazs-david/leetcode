@@ -7,26 +7,16 @@ class Solution:
         if root is None:
             return True
 
-        if root.left is not None and not self.isLower(root.left, root.val):
-            return False
-        if root.right is not None and not self.isHigher(root.right, root.val):
-            return False
-        return self.isValidBST(root.left) and self.isValidBST(root.right)
+        return self.isWithin(root, None, None)
 
-    def isLower(self, root: TreeNode, threshold: int) -> bool:
-        if root.val >= threshold:
+    def isWithin(self, root: TreeNode, low: Optional[int], high: Optional[int]) -> bool:
+        if low is not None and root.val <= low:
             return False
-        if root.left is not None and not self.isLower(root.left, threshold):
+        if high is not None and root.val >= high:
             return False
-        if root.right is not None and not self.isLower(root.right, threshold):
-            return False
-        return True
 
-    def isHigher(self, root: TreeNode, threshold: int) -> bool:
-        if root.val <= threshold:
+        if root.left is not None and not self.isWithin(root.left, low, root.val):
             return False
-        if root.left is not None and not self.isHigher(root.left, threshold):
-            return False
-        if root.right is not None and not self.isHigher(root.right, threshold):
+        if root.right is not None and not self.isWithin(root.right, root.val, high):
             return False
         return True
