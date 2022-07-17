@@ -13,4 +13,8 @@ class TestSolution(TestCase):
 
     def test_unique_paths3(self):
         x = Solution()
+        self.assertEqual(84, x.uniquePaths(7, 4))
+
+    def test_unique_paths4(self):
+        x = Solution()
         x.uniquePaths(23, 12)
