@@ -10,3 +10,7 @@ class TestSolution(TestCase):
     def test_unique_paths2(self):
         x = Solution()
         self.assertEqual(3, x.uniquePaths(3, 2))
+
+    def test_unique_paths3(self):
+        x = Solution()
+        x.uniquePaths(23, 12)
