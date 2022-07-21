@@ -4,7 +4,7 @@ class Solution:
             return 0
         grid = [[0]*len(obstacleGrid[0]) for i in range(len(obstacleGrid))]
 
-        for i in range( len(obstacleGrid)):
+        for i in range(len(obstacleGrid)):
             if obstacleGrid[i][0] == 1:
                 break
             else:
