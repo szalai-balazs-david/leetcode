@@ -14,3 +14,11 @@ class TestSolution(TestCase):
     def test_plus_one3(self):
         x = Solution()
         self.assertListEqual([1,0], x.plusOne([9]))
+
+    def test_plus_one4(self):
+        x = Solution()
+        self.assertListEqual([2,0], x.plusOne([1,9]))
+
+    def test_plus_one5(self):
+        x = Solution()
+        self.assertListEqual([1,0,0], x.plusOne([9,9]))
