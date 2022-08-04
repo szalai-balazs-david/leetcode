@@ -10,3 +10,7 @@ class TestSolution(TestCase):
     def test_nth_ugly_number2(self):
         x = Solution()
         self.assertEqual(1, x.nthUglyNumber(1))
+
+    def test_nth_ugly_number3(self):
+        x = Solution()
+        x.nthUglyNumber(1650)
