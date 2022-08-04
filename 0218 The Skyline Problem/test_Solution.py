@@ -16,3 +16,10 @@ class TestSolution(TestCase):
         expected = [[0,3],[5,0]]
         actual = x.getSkyline(input)
         self.assertListEqual(expected, actual)
+
+    def test_get_skyline3(self):
+        x = Solution()
+        input = [[1,2,1],[1,2,2],[1,2,3]]
+        expected = [[1,3],[2,0]]
+        actual = x.getSkyline(input)
+        self.assertListEqual(expected, actual)
