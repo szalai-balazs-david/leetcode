@@ -14,6 +14,4 @@ class TestSolution(TestCase):
 
     def test_sorted_list_to_bst2(self):
         x = Solution()
-        expected = []
-        actual = treeNode2List(x.sortedListToBST(None))
-        self.assertListEqual(expected, actual)
+        self.assertEqual(None, x.sortedListToBST(None))
