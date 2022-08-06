@@ -4,18 +4,10 @@ from typing import Optional
 
 class Solution:
     def sortedArrayToBST(self, nums: list[int]) -> Optional[TreeNode]:
-        if nums is None:
-            return None
-        length = len(nums)
-        match length:
-            case 0:
+        def divideAndConquer(left: int, right: int):
+            if left > right:
                 return None
-            case 1:
-                return TreeNode(nums[0])
-            case 2:
-                return TreeNode(nums[1], TreeNode(nums[0]))
-            case 3:
-                return TreeNode(nums[1], TreeNode(nums[0]), TreeNode(nums[2]))
-        mid = length // 2
+            mid = (left + right + 1) // 2
+            return TreeNode(nums[mid], divideAndConquer(left, mid-1), divideAndConquer(mid + 1, right))
 
-        return TreeNode(nums[mid], self.sortedArrayToBST(nums[:mid]), self.sortedArrayToBST(nums[mid + 1:]))
+        return divideAndConquer(0, len(nums) - 1)
