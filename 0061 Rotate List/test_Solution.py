@@ -19,3 +19,19 @@ class TestSolution(TestCase):
         result = x.rotateRight(input, 4)
         actual = listNode2list(result)
         self.assertListEqual(expected, actual)
+
+    def test_rotate_right3(self):
+        x = Solution()
+        expected = [1]
+        input = createListNode([1])
+        result = x.rotateRight(input, 1)
+        actual = listNode2list(result)
+        self.assertListEqual(expected, actual)
+
+    def test_rotate_right4(self):
+        x = Solution()
+        expected = [1,2]
+        input = createListNode([1,2])
+        result = x.rotateRight(input, 2)
+        actual = listNode2list(result)
+        self.assertListEqual(expected, actual)
