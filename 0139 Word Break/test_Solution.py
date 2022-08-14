@@ -14,3 +14,7 @@ class TestSolution(TestCase):
     def test_word_break3(self):
         x = Solution()
         self.assertEqual(False, x.wordBreak("catsandog", ["cats","dog","sand","and","cat"]))
+
+    def test_word_break4(self):
+        x = Solution()
+        self.assertEqual(False, x.wordBreak("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab", ["a","aa","aaa","aaaa","aaaaa","aaaaaa","aaaaaaa","aaaaaaaa","aaaaaaaaa","aaaaaaaaaa"]))
