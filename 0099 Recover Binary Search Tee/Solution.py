@@ -3,27 +3,35 @@ from Utilities.TreeNode import TreeNode
 
 
 class Solution:
+    def __init__(self):
+        self.prev = None
+        self.violator1 = None
+        self.violator2 = None
+
     def recoverTree(self, root: Optional[TreeNode]) -> None:
-        def inorder_traversal(node: TreeNode) -> list[TreeNode]:
+        def inorder(node: TreeNode):
             if node is None:
-                return []
-            result = inorder_traversal(node.left)
-            result.append(node)
-            result += inorder_traversal(node.right)
-            return result
+                return
 
-        nodes = inorder_traversal(root)
+            inorder(node.left)
 
-        violator1 = None
-        violator2 = nodes[-1]
-        for i in range(len(nodes)):
-            if violator1 is None:
-                if nodes[i].val > nodes[i+1].val:
-                    violator1 = nodes[i]
-            else:
-                if violator1.val < nodes[i].val:
-                    violator2 = nodes[i-1]
-                    break
-        violator1.val, violator2.val = violator2.val, violator1.val
+            if self.prev:
+                if not self.violator1:
+                    if self.prev.val > node.val:
+                        self.violator1 = self.prev
+                else:
+                    if self.violator1.val < node.val:
+                        self.violator2 = self.prev
+                        return
 
-        return
+            if self.violator2:
+                return
+            self.prev = node
+
+            inorder(node.right)
+
+        inorder(root)
+        if self.violator2 is None:
+            self.violator2 = self.prev
+
+        self.violator1.val, self.violator2.val = self.violator2.val, self.violator1.val

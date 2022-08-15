@@ -25,3 +25,22 @@ class TestSolution(TestCase):
         x.recoverTree(input)
         actual = treeNode2List(input)
         self.assertListEqual(expected, actual)
+
+    def test_recover_tree3(self):
+        x = Solution()
+        input = TreeNode(0,
+                         TreeNode(1))
+        expected = [1,0, None]
+        x.recoverTree(input)
+        actual = treeNode2List(input)
+        self.assertListEqual(expected, actual)
+
+    def test_recover_tree4(self):
+        x = Solution()
+        input = TreeNode(2,
+                         TreeNode(3),
+                         TreeNode(1))
+        expected = [2,1,3]
+        x.recoverTree(input)
+        actual = treeNode2List(input)
+        self.assertListEqual(expected, actual)
