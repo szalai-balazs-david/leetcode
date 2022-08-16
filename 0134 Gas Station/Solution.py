@@ -1,7 +1,5 @@
 class Solution:
     def canCompleteCircuit(self, gas: list[int], cost: list[int]) -> int:
-        if sum(gas) < sum(cost):
-            return -1
         difference = 0
         min_difference = 0
         index = -1
@@ -10,5 +8,8 @@ class Solution:
             if difference <= min_difference:
                 index = i
                 min_difference = difference
+
+        if difference < 0:
+            return -1
 
         return (index + 1) % len(gas)
