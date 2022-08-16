@@ -18,3 +18,7 @@ class TestSolution(TestCase):
     def test_can_complete_circuit4(self):
         x = Solution()
         self.assertEqual(1, x.canCompleteCircuit([1,2], [2,1]))
+
+    def test_can_complete_circuit5(self):
+        x = Solution()
+        self.assertEqual(0, x.canCompleteCircuit([11,4,7,1,0],[2,5,5,9,1]))

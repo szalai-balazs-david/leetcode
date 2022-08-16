@@ -4,11 +4,11 @@ class Solution:
             return -1
         difference = 0
         min_difference = 0
-        index = 0
+        index = -1
         for i in range(len(gas)):
             difference += gas[i] - cost[i]
             if difference <= min_difference:
-                index = i + 1
+                index = i
                 min_difference = difference
 
-        return index % len(gas)
+        return (index + 1) % len(gas)
