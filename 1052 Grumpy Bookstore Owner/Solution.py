@@ -11,10 +11,8 @@ class Solution:
                 customer += customers[i]
         max_extra_customers = customer
         for i in range(minutes, len(customers)):
-            if grumpy[i] == 1:
-                customer += customers[i]
-            if grumpy[i-minutes] == 1:
-                customer -= customers[i-minutes]
+            customer += grumpy[i] * customers[i]
+            customer -= grumpy[i-minutes] * customers[i-minutes]
             max_extra_customers = max(max_extra_customers, customer)
 
         return satisfied_customers + max_extra_customers
