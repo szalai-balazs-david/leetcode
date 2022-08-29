@@ -1,6 +1,3 @@
-from collections import Counter
-
-
 class Solution:
     def makesquare(self, matchsticks: list[int]) -> bool:
         total = sum(matchsticks)
@@ -8,39 +5,19 @@ class Solution:
             return False
         target = total // 4
 
-        counter = Counter(matchsticks)
-        unique = list(counter.keys())
-        unique.sort()
-        print(counter)
-        print(unique)
-        print(target)
-
-        if max(unique) > target:
+        matchsticks.sort()
+        if matchsticks[0] > target:
+            return False
+        
+        def backtrack(sums: list[int], index: int):
+            for i in range(4):
+                if sums[i] + matchsticks[index] <= target:
+                    sums[i] += matchsticks[index]
+                    if index == 0:
+                        return True
+                    if backtrack(sums, index - 1):
+                        return True
+                    sums[i] -= matchsticks[index]
             return False
 
-        def backtrack(remainder: int, index: int):
-            print(f"remainder: {remainder}, index: {index}")
-            while index >= 0:
-                print(f"unique[{index}]: {unique[index]}")
-                print(f"counter[unique[{index}]]: {counter[unique[index]]}")
-                if unique[index] > remainder or counter[unique[index]] <= 0:
-                    index -= 1
-                    print(f"Continue. New index: {index}")
-                    continue
-                remainder -= unique[index]
-                counter[unique[index]] -= 1
-                if remainder == 0:
-                    return True
-                if backtrack(remainder, index):
-                    return True
-                remainder += unique[index]
-                counter[unique[index]] += 1
-                index -= 1
-            print("Retuning False")
-            return False
-
-        for i in range(4):
-            if not backtrack(target, len(unique) - 1):
-                return False
-
-        return True
+        return backtrack([0,0,0,0], len(matchsticks) - 1)
