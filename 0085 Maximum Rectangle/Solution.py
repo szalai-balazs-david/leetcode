@@ -9,21 +9,17 @@ class Solution:
 
         result = 0
         for row in values:
-            for j in range(columns):
-                if row[j] == 0:
-                    continue
-                height = row[j]
-                largest_area = 0
-                for k in range(j, -1, -1):
-                    # Only do calc if height decreased
-                    if row[k] >= height:
-                        continue
-                    largest_area = max(largest_area, (j - k) * height)
-                    height = row[k]
-                    # If there's no way to beat current_best with this width, stop looping
-                    if height * (j + 1) <= largest_area:
-                        break
-                largest_area = max(largest_area, (j + 1) * height)
-                result = max(result, largest_area)
+            mem = [(0, row[0])]
+            for i in range(1, columns):
+                if not mem or row[i] > mem[-1][1]:
+                    mem.append((i, row[i]))
+                else:
+                    while mem and mem[-1][1] >= row[i]:
+                        j, h = mem.pop()
+                        result = max(result, h * (i-j))
+                    mem.append((j, row[i]))
+            while mem:
+                j, h = mem.pop()
+                result = max(result, h * (columns - j))
 
         return result
