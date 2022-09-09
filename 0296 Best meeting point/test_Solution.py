@@ -33,7 +33,21 @@ class TestSolution(TestCase):
 
     def test_method5(self):
         x = Solution()
-        self.assertEqual(7, x.method([
+        self.assertEqual(6, x.method([
             [1,0,0,0,0],
             [0,0,0,0,1],
             [0,0,0,0,1]]))
+
+    def test_method6(self):
+        x = Solution()
+        self.assertEqual(6, x.method([
+            [1,0,0,0,1],
+            [0,0,0,0,0],
+            [0,0,0,0,1]]))
+
+    def test_method7(self):
+        x = Solution()
+        self.assertEqual(7, x.method([
+            [1,0,0,0,0],
+            [1,0,0,0,0],
+            [1,0,0,0,1]]))

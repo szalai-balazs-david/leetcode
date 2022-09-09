@@ -19,7 +19,7 @@ class Solution:
                 res += abs(row - rows[i]) + abs(col - cols[i])
             return res
 
-        r = round(sum(rows) / len(rows))
-        c = round(sum(cols) / len(cols))
+        r = rows[len(rows) // 2]
+        c = cols[len(cols) // 2]
 
         return calc_travel_dist(r, c)
