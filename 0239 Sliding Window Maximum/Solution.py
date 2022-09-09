@@ -1,20 +1,25 @@
-from heapq import heappush, heappop
+from collections import deque
 
 
+# Cheated. Looked at discussion for alternative solution.
 class Solution:
     def maxSlidingWindow(self, nums: list[int], k: int) -> list[int]:
         result = []
-        heap = [] # (-value, index). Negative value for max heap
+        q = deque()
 
-        for i, value in enumerate(nums):
+        def add_to_queue(i: int) -> None:
             value = nums[i]
-            if heap and -value <= heap[0][0]:
-                heap = [(-value, i)]
-            else:
-                heappush(heap, (-value, i))
-            if i >= k - 1:
-                while heap[0][1] <= i - k:
-                    heappop(heap)
-                result.append(-(heap[0][0]))
+            while q and nums[q[-1]] <= value:
+                q.pop()
+            q.append(i)
+
+        for i in range(k-1):
+            add_to_queue(i)
+
+        for i in range(k-1, len(nums)):
+            add_to_queue(i)
+            while q[0] < i - k + 1:
+                q.popleft()
+            result.append(nums[q[0]])
 
         return result
