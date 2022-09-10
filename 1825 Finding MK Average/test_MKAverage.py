@@ -14,3 +14,12 @@ class TestMKAverage(TestCase):
         x.addElement(5)
         x.addElement(5)
         self.assertEqual(5, x.calculateMKAverage())
+
+    def test2(self):
+        x = MKAverage(10000, 3000)
+        for i in range(20000):
+            x.addElement(i)
+            if i < 9999:
+                self.assertEqual(-1, x.calculateMKAverage())
+            else:
+                self.assertEqual(i - 5000, x.calculateMKAverage())
